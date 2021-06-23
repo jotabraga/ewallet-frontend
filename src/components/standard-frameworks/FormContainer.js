@@ -17,6 +17,14 @@ form{
     align-itens: center;
     align-text: center;
 
+    h1{
+        font-family: 'Saira Stencil One', cursive;
+        font-size: 32px;
+        font-weight: 400;
+        color: #fff;
+        margin-bottom: 28px;
+        text-align: center;
+    }
     h2{
         font-weight: 700;
         font-size: 15px;
