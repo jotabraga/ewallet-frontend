@@ -22,10 +22,11 @@ export default function App() {
       <Switch>
         <UserContext.Provider value={{ user, setUser }}>
 
-          <Route path="/" exact component={NewOut}></Route>
+          <Route path="/" exact component={LogIn}></Route>
           <Route path="/sign-up" exact component={SignUp}></Route>
           <Route path="/main" exact component={MainPage}></Route>
-
+          <Route path="/new-income" exact component={NewIn}></Route>
+          <Route path="/new-expense" exact component={NewOut}></Route>
 
         </UserContext.Provider>
       </Switch>
