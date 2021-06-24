@@ -5,10 +5,11 @@ width: 326px;
 height: 100vh;
 margin-left: auto;
 margin-right: auto;
+margin-top: ${props => props.top};
 display: flex;
 flex-direction: column;
 align-itens: center;
-justify-content: center;   
+justify-content: ${props => props.position || "center"};   
 
 form{
     width: 100%;
