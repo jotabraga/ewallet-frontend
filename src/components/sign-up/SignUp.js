@@ -1,9 +1,7 @@
 import MainContainer from "../standard-frameworks/MainContainer";
 import FormContainer from "../standard-frameworks/FormContainer";
-import styled from "styled-components";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import UserContext from "../UserContext";
 import axios from "axios";
 
 
@@ -11,8 +9,8 @@ export default function SignUp(){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [reapeatPassword, setRepeatPassword] = useState("");
     const [name, setName] = useState("");
-    const [pictureUrl, setPictureurl] = useState("");
     const [disabled, setDisabled] = useState(false);
     let history = useHistory();
 
@@ -21,16 +19,22 @@ export default function SignUp(){
         e.preventDefault();
         
         setDisabled(true);
-        
-        const body = {email, password, name, pictureUrl};
 
-        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/sign-up", body);
+        if( password !== reapeatPassword){
+          setDisabled(false);
+          return alert("Confirme a senha inserida corretamente");
+        }
+        
+        const body = {name, email, password};
+
+        const request = axios.post("http://localhost:4000/register", body);
 
         request.then((e) => history.push("/"));
 
         request.catch(e => {
+            console.log("aqui");
             setDisabled(false);           
-            alert("Erro: " + e.response.status + ", " + e.response.data.message);      
+            console.log(e);     
         });
     }
 
@@ -45,7 +49,7 @@ export default function SignUp(){
               required
               placeholder="Nome"
               disabled={disabled}
-              value={email}
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
   
@@ -72,8 +76,8 @@ export default function SignUp(){
               required
               placeholder="Confirme a senha"
               disabled={disabled}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={reapeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
             />
   
             <button type="submit" disabled={disabled}>
