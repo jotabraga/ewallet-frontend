@@ -1,7 +1,6 @@
 import MainContainer from "../standard-frameworks/MainContainer";
 import FormContainer from "../standard-frameworks/FormContainer";
-import styled from "styled-components";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import UserContext from "../UserContext";
 import axios from "axios";
@@ -14,25 +13,24 @@ export default function LogIn() {
   const { setUser } = useContext(UserContext);
 
   function login(e) {
+
     e.preventDefault();
+    
     setDisabled(true);
 
     const body = { email, password };
 
-    const request = axios.post(
-      "https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/sign-in",
-      body
-    );
+    const request = axios.post("http://localhost:4000/log-in", body);
 
     request.then((response) => {
       setUser(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
-      history.push("/timeline");
+      history.push("/main");
     });
 
     request.catch((e) => {
       setDisabled(false);
-      alert("Erro: " + e.response.status + ", " + e.response.data.message);
+      console.log(e);
     });
   }
 

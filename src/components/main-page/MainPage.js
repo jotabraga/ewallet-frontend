@@ -1,16 +1,22 @@
-import React, { useState, useContext } from "react";
+import { useContext, useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import MainContainer from "../standard-frameworks/MainContainer";
 import NameContainer from "../standard-frameworks/NameContainer";
 import { IoExitOutline } from "react-icons/io5";
 import styled from "styled-components";
+import { UserContext } from "../UserContext";
 
 export default function MainPage() {
+
+  const history = useHistory();
+  const [transactions, setTransactions] = useState([]);
+  const {user, setUser} = useContext(UserContext);
+
   return (
     <MainContainer>
       <NameContainer justify="space-between" >
-        <span>Olá, Fulano</span>
+        <span>Olá, ${user.name}</span>
         <IoExitOutline size="26px" color="white" />
       </NameContainer>
 
