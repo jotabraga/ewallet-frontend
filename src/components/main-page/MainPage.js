@@ -149,6 +149,7 @@ const Records = styled.div`
     ul {
       width: 100%;
       font-size: 19px;
+      height: 100%;
       overflow-y: scroll;
     }
   }
