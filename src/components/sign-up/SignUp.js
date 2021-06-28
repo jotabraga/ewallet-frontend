@@ -1,8 +1,9 @@
 import MainContainer from "../standard-frameworks/MainContainer";
 import FormContainer from "../standard-frameworks/FormContainer";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import UserContext from "../UserContext";
 
 
 export default function SignUp(){
@@ -13,6 +14,14 @@ export default function SignUp(){
     const [name, setName] = useState("");
     const [disabled, setDisabled] = useState(false);
     let history = useHistory();
+    const { setUser } = useContext(UserContext);
+
+    useEffect(() => {
+      if (localStorage.getItem("user")) {
+        setUser(JSON.parse(localStorage.getItem("user")));
+        history.push("/timeline");
+      }
+    }, [setUser, history]);
 
     function register(e){
 
