@@ -1,7 +1,7 @@
 # E-wallet 💸:
 A helpful tool to control your personal finances 🤑
 ## Preview 👀
-![Repoprovas preview](./src/assets/preview.gif) 
+![E-Wallet_preview](./src/assets/preview.gif) 
 #### [Click here and try it now!](https://project-repo-provas-front-end.vercel.app/)
 ## About 🔎
 This is an web aplication wich students can share their old tests and find the one they need.
