@@ -1,22 +1,19 @@
 # E-wallet 💸:
 A helpful tool to control your personal finances 🤑
 ## Preview 👀
-![E-Wallet_preview](./src/assets/preview.gif) 
-#### [Click here and try it now!](https://project-repo-provas-front-end.vercel.app/)
+![E-Wallet_preview](./src/assets/e-wallet.gif) 
+#### [Click here and try it now!](https://ewallet-frontend-bfxrctsnu-jotabraga.vercel.app/)
 ## About 🔎
 This is an web aplication wich students can share their old tests and find the one they need.
 ### Implemented features :heavy_check_mark:
-- [x] Subjects tests
-- [x] Professors tests
-- [x] Submit a test
-- [x] Order tests by its category
-- [x] Open a test 
-- [x] Mission page 
-- [x] Mobile version
+- [x] New income
+- [x] New expenses
+- [x] Financial balance
+- [x] Final value of the balance
 ### Future improvements 🔮
-- [ ] Sign up
-- [ ] Log in
-- [ ] Register a professor/subject
+- [ ] Delete new entrance
+- [ ] Month balance chart
+- [ ] Investment simulation
 ## Tech tools 🔧
 The following tools and frameworks were used in the construction of the project:<br>
 <p>
@@ -30,8 +27,8 @@ The following tools and frameworks were used in the construction of the project:
 ## How to run ⚙️
 
 1. Clone this repository
-2. Clone the [back-end repository](https://github.com/jotabraga/examdrive-backend)
-3. Follow instructions to run [back-end](https://github.com/jotabraga/examdrive-backend)
+2. Clone the [back-end repository](https://github.com/jotabraga/ewallet-backend)
+3. Follow instructions to run [back-end](https://github.com/jotabraga/ewallet-backend/blob/main/README.md)
 4. Install dependencies
 ```bash
 npm i
