@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import MainContainer from "../standard-frameworks/MainContainer";
@@ -7,56 +7,49 @@ import { IoExitOutline } from "react-icons/io5";
 import styled from "styled-components";
 import UserContext from "../UserContext";
 import axios from "axios";
-import Entry from './Entry';
+import Entry from "./Entry";
 
 export default function MainPage() {
-
   const history = useHistory();
   const [transactions, setTransactions] = useState([]);
   const [total, setTotal] = useState(0);
-  const {user, setUser} = useContext(UserContext);
-  
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-
-    if(!user.token){
+    if (!user.token) {
       return history.push("/");
     }
 
-    const config = {headers: {Authorization: `Bearer ${user?.token}`}};
+    const config = { headers: { Authorization: `Bearer ${user?.token}` } };
 
-    const request = axios.get("http://localhost:4000/transactions" , config);
+    const request = axios.get("http://localhost:4000/transactions", config);
 
     request.then((res) => {
       setTransactions(res.data.infoToShow);
-      setTotal(res.data.balance);      
+      setTotal(res.data.balance);
     });
 
     request.catch((e) => console.log(e));
-
   }, [user, history]);
 
-  function logOut(){  
-    
-    const config = {headers: {Authorization: `Bearer ${user?.token}`}};
+  function logOut() {
+    const config = { headers: { Authorization: `Bearer ${user?.token}` } };
 
-		const request = axios.post('http://localhost:4000/logout', [], config)
+    const request = axios.post("http://localhost:4000/logout", [], config);
     request.then((res) => {
       setUser(null);
       history.push("/");
-    })
+    });
     request.catch((e) => console.log(e));
   }
 
   return (
     <MainContainer>
-
-      <NameContainer justify="space-between" >
+      <NameContainer justify="space-between">
         <span>Olá, {user.name}</span>
         <Link to="/">
-          <IoExitOutline size="26px" color="white" onClick={logOut}/>
+          <IoExitOutline size="26px" color="white" onClick={logOut} />
         </Link>
-
       </NameContainer>
 
       <Records>
@@ -69,7 +62,9 @@ export default function MainPage() {
             </ul>
             <Total total={total}>
               <span>Saldo</span>
-              <span>{(total / 100).toFixed(2).replace(".", ",")}</span>
+              <span>
+                R$ {String((total / 100).toFixed(2).replace(".", ","))}
+              </span>
             </Total>
           </div>
         ) : (
@@ -83,30 +78,26 @@ export default function MainPage() {
 
       <AddRecord>
         <Link to="/new-income">
-            <NewRecord>
+          <NewRecord>
             <AiOutlinePlusCircle size="25px" />
             Nova entrada
-            </NewRecord>
+          </NewRecord>
         </Link>
         <Link to="/new-expense">
-            <NewRecord>
+          <NewRecord>
             <AiOutlineMinusCircle size="25px" />
             Nova saida
-            </NewRecord>
-      </Link>
-
+          </NewRecord>
+        </Link>
       </AddRecord>
-
     </MainContainer>
   );
 }
 
-
-
-const NewRecord = styled.button` 
+const NewRecord = styled.button`
   width: 155px;
   height: 114px;
-  background: #A328D6;
+  background: #a328d6;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -114,8 +105,11 @@ const NewRecord = styled.button`
   align-itens: left;
   padding: 11px;
   border: none;
+  :hover {
+    filter: brightness(1.1);
+  }
 `;
-const AddRecord = styled.div` 
+const AddRecord = styled.div`
   margin-top: 13px;
   display: flex;
   width: 326px;

@@ -5,11 +5,11 @@ width: 326px;
 height: 100vh;
 margin-left: auto;
 margin-right: auto;
-margin-top: ${props => props.top};
+margin-top: ${(props) => props.top};
 display: flex;
 flex-direction: column;
 align-itens: center;
-justify-content: ${props => props.position || "center"};   
+justify-content: ${(props) => props.position || "center"};   
 
 form{
     width: 100%;
@@ -51,6 +51,9 @@ form{
         background: #A328D6;
         color: #fff;
         font-size: 20px;
-        border: none;    
+        border: none;  
+        :hover {
+            filter: brightness(1.1);
+        } 
     }
 }`;

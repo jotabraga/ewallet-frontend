@@ -13,9 +13,8 @@ export default function LogIn() {
   const { setUser } = useContext(UserContext);
 
   function login(e) {
-
     e.preventDefault();
-    
+
     setDisabled(true);
 
     const body = { email, password };
@@ -38,7 +37,7 @@ export default function LogIn() {
     <MainContainer>
       <FormContainer>
         <form onSubmit={login}>
-          <h1>MyWallet</h1>
+          <h1>E-Wallet</h1>
 
           <input
             type="email"

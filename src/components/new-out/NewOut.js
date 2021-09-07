@@ -1,57 +1,62 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import MainContainer from "../standard-frameworks/MainContainer";
 import NameContainer from "../standard-frameworks/NameContainer";
 import FormContainer from "../standard-frameworks/FormContainer";
+import { BiArrowBack } from "react-icons/bi";
 import UserContext from "../UserContext";
 import axios from "axios";
 
 export default function NewOut() {
-
   const [amount, setAmount] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const [description, setDescription] = useState("");
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const history = useHistory();
 
-  function expenseRegister(e){
-
+  function expenseRegister(e) {
     e.preventDefault();
-		setDisabled(true);
+    setDisabled(true);
 
-		const config = {
-			headers: {
-				Authorization: `Bearer ${user.token}`,
-			},
-		};
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
 
-		const data = {
-			amount,
-			description,
-      type: 'expense'
-		};
+    const data = {
+      amount,
+      description,
+      type: "expense",
+    };
 
     console.log(data);
 
-		const request = axios.post('http://localhost:4000/transactions', data, config);
-		request.then((res) => {
-				history.push('/main');
-			})
-		request.catch((e) => {
-				console.log(e);
-			});
-		setDisabled(false);
-
+    const request = axios.post(
+      "http://localhost:4000/transactions",
+      data,
+      config
+    );
+    request.then((res) => {
+      history.push("/main");
+    });
+    request.catch((e) => {
+      console.log(e);
+    });
+    setDisabled(false);
   }
 
   return (
     <MainContainer>
-      <NameContainer justify="left">
+      <NameContainer justify="space-between">
         <span>Nova saida</span>
+        <Link to="/main">
+          <BiArrowBack size="26px" color="white" />
+        </Link>
       </NameContainer>
 
       <FormContainer position="start" top="40px">
-        <form disabled={disabled} onSubmit={expenseRegister} >
+        <form disabled={disabled} onSubmit={expenseRegister}>
           <input
             type="number"
             required

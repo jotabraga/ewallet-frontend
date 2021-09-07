@@ -4,15 +4,13 @@ export default function Entry(props) {
   const { date, description, amount, type } = props;
   const valueFormated = String((amount / 100).toFixed(2)).replace(".", ",");
   return (
-
     <EntryRow Type={type}>
       <span>
         <span>{date}</span>
         <span>{description}</span>
       </span>
-      <span>{valueFormated}</span>
+      <span>R$ {valueFormated}</span>
     </EntryRow>
-	
   );
 }
 
